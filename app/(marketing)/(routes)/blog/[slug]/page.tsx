@@ -8,7 +8,30 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 // Simulated blog data - In a real app, this would come from a database or CMS
-const blogPosts = {
+const blogPosts: Record<string, {
+  title: string;
+  description: string;
+  date: string;
+  readTime: string;
+  author: {
+    name: string;
+    role: string;
+    imageUrl: string;
+  };
+  content: {
+    type: string;
+    content?: string;
+    url?: string;
+    alt?: string;
+    caption?: string;
+    items?: string[];
+  }[];
+  relatedPosts: {
+    title: string;
+    slug: string;
+    image: string;
+  }[];
+}> = {
   "mastering-customer-relationships-2024": {
     title: "Mastering Customer Relationships in 2024",
     description: "Learn the latest strategies and tools for building lasting customer relationships in today's digital landscape. Discover how AI and automation can enhance your CRM efforts.",
@@ -71,7 +94,7 @@ const blogPosts = {
 export default function BlogPost() {
   const params = useParams();
   const slug = params.slug as string;
-  const post = blogPosts[slug];
+  const post = slug in blogPosts ? blogPosts[slug] : null;
 
   if (!post) {
     return (
@@ -153,24 +176,24 @@ export default function BlogPost() {
               case "image":
                 return (
                   <figure key={index} className="my-8">
-                    <Image
-                      src={section.url}
-                      alt={section.alt}
-                      width={800}
-                      height={400}
-                      className="rounded-lg"
-                    />
-                    {section.caption && (
-                      <figcaption className="text-sm text-gray-500 mt-2 text-center">
-                        {section.caption}
-                      </figcaption>
-                    )}
-                  </figure>
+  <Image
+    src={section.url ?? '/placeholder-image.png'} // URL par défaut si `undefined`
+    alt={section.alt ?? 'Default description'}
+    width={800}
+    height={400}
+    className="rounded-lg"
+  />
+  {section.caption && (
+    <figcaption className="text-sm text-gray-500 mt-2 text-center">
+      {section.caption}
+    </figcaption>
+  )}
+</figure>
                 );
               case "list":
                 return (
                   <ul key={index} className="list-disc list-inside mb-6 space-y-2">
-                    {section.items.map((item, itemIndex) => (
+                    {section?.items?.map((item, itemIndex) => (
                       <li key={itemIndex} className="text-gray-600">
                         {item}
                       </li>
