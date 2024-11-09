@@ -92,7 +92,7 @@ const BlogPage = () => {
               Insights for Growth
             </h1>
             <p className="text-xl text-gray-100 max-w-2xl mx-auto">
-              Discover strategies, tips, and insights to help your business thrive in today's digital landscape.
+              Discover strategies, tips, and insights to help your business thrive in today&apos;s digital landscape.
             </p>
           </motion.div>
 

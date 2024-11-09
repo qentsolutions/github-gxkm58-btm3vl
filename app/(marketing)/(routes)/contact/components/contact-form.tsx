@@ -9,8 +9,16 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  company: string;
+  email: string;
+  message: string;
+}
+
 interface ContactFormProps {
-  onSubmit: (data: any) => void;
+  onSubmit: (data: FormData) => void;
 }
 
 export function ContactForm({ onSubmit }: ContactFormProps) {

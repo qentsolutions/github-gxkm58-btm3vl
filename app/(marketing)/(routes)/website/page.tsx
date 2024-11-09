@@ -3,9 +3,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { HeroParallax } from "../../components/hero-parallax";
-import { Check, Code, Globe, Laptop, Rocket, Zap } from "lucide-react";
+import { Check, Code, Globe, Rocket, Zap } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 const products = [
   {
@@ -164,7 +163,7 @@ export default function Website() {
               Our Recent Projects
             </h2>
             <p className="text-xl text-gray-600">
-              Take a look at some of our favorite websites we've built.
+              Take a look at some of our favorite websites we&apos;ve built.
             </p>
           </div>
           <HeroParallax products={products} />
@@ -243,7 +242,7 @@ export default function Website() {
             Ready to Start Your Project?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Let's create something amazing together.
+            Let&apos;s create something amazing together.
           </p>
           <Link href="/contact">
             <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">

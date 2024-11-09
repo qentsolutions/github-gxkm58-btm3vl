@@ -107,7 +107,7 @@ export function ScheduleMeeting() {
             <h3>Schedule Meeting</h3>
           </div>
           <p className="text-gray-600">
-            Choose your preferred date and time for the meeting, and we'll send you a confirmation email with the meeting details.
+            Choose your preferred date and time for the meeting, and we&apos;ll send you a confirmation email with the meeting details.
           </p>
           <Button
             className="w-full"

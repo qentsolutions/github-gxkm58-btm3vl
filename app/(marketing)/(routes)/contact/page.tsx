@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MessageSquare, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 import { ContactForm } from "./components/contact-form";
@@ -29,10 +29,19 @@ const contactInfo = [
   }
 ];
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  company?: string;
+  email: string;
+  message: string;
+}
+
+
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = async (formData: any) => {
+  const handleSubmit = async (formData: FormData) => {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -68,7 +77,7 @@ export default function Contact() {
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Message Sent!</h2>
           <p className="text-lg text-gray-600 mb-8">
-            Thank you for reaching out. We'll get back to you shortly.
+            Thank you for reaching out. We&apos;ll get back to you shortly.
           </p>
           <button 
             onClick={() => setFormSubmitted(false)}
@@ -93,7 +102,7 @@ export default function Contact() {
           >
             <h1 className="text-4xl font-bold mb-6">Get in Touch</h1>
             <p className="text-xl text-gray-100 max-w-2xl mx-auto">
-              Have a question or want to learn more? We'd love to hear from you.
+              Have a question or want to learn more? We&apos;d love to hear from you.
               Our team is here to help.
             </p>
           </motion.div>
